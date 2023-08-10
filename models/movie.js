@@ -38,6 +38,14 @@ const movieSchema = new mongoose.Schema({
       message: 'Неправильный формат ссылки',
     },
   },
+  thumbnail: {
+    type: String,
+    required: true,
+    validate: {
+      validator: (v) => validator.isURL(v),
+      message: 'Неправильный формат ссылки',
+    },
+  },
   owner: {
     required: true,
     type: mongoose.Schema.Types.ObjectId,
