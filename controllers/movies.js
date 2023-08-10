@@ -42,9 +42,7 @@ const creatMovie = (req, res, next) => {
     movieId,
     owner: ownerId,
   })
-    // вернём записанные в базу данные
     .then((movie) => res.send({ movie }))
-    // данные не записались, вернём ошибку
     .catch(
       (err) => {
         if (err.name === 'ValidationError') {

@@ -9,6 +9,7 @@ const {
   login,
   createUser,
 } = require('../controllers/auth');
+const { signout } = require('../controllers/users');
 
 router.use('/movies', auth, moviesRoutes);
 router.use('/users', auth, userRoutes);
@@ -25,6 +26,7 @@ router.post('/signup', celebrate({
     name: Joi.string().min(2).max(30).required(),
   }),
 }), createUser);
+router.use('/signout', signout);
 router.use(auth, (req, res, next) => next(new NotFoundError('Проверьте корректность пути запроса')));
 
 module.exports = {

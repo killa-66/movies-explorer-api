@@ -42,7 +42,13 @@ const getCurrentUser = (req, res, next) => {
     );
 };
 
+const signout = (req, res) => {
+  res.clearCookie('token');
+  res.status(NO_ERROR).send('Выход выполнен успешно');
+};
+
 module.exports = {
   updateUser,
   getCurrentUser,
+  signout,
 };
